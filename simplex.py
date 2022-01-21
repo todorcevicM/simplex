@@ -1,4 +1,5 @@
 import numpy as np
+np.set_printoptions(precision=3, suppress=True)
 
 def simplex(A, b, c, max = True):
     # 1. predobrada:
@@ -32,6 +33,7 @@ def simplex(A, b, c, max = True):
     # TODO: ovde izmeniti ako se radi primer gde one bazne promenljive nisu na dodatne promenljive
     # base = np.array([1, 1, 0, 1, 0])
     # B = np.matrix([[-1 / 2, -1, 0], [-2, -2, 1], [-1, -4, 0]])
+    # B_inv = np.linalg.inv(B)
 
     # 2. obrada: 
     while True:
@@ -98,13 +100,13 @@ def simplex(A, b, c, max = True):
         else:
             if finding_min[min_index] < 0:
                 print("Najmanji element je < 0, algoritam je gotov")
-                print(f"Konacna vrednost miz z = {-table[0, -2]}")
+                print(f"Konacna vrednost miz z = {-round(table[0, -2])}")
                 print("Maksimalne vrednosti promenljivih:")
                 s = 0
                 for (index, i) in enumerate(base):
                     if i == 1:
                         s += 1
-                        print(f"\tPromenljiva x_{index + 1} = {-table[s, -2]}")
+                        print(f"\tPromenljiva x_{index + 1} = {-round(table[s, -2])}")
                     else: 
                         print(f"\tPromenljiva x_{index + 1} = 0")
                 return 
